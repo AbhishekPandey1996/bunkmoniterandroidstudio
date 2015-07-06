@@ -1,6 +1,8 @@
 package abhishekp.example.com.bunkmoniter;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -36,6 +38,11 @@ public class AddTT extends Activity implements View.OnClickListener {
         b=(Button)findViewById(R.id.bttsubmit);
         et=(EditText)findViewById(R.id.etaddtt) ;
         b.setOnClickListener(this) ;
+       /* NavigationDrawer fr = new NavigationDrawer();
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.add(R.id.activitymain,fr,"text");
+        ft.commit();*/
 
         timetables = getSharedPreferences(timetables_pref, 0);
         count = timetables.getInt(timetable_count_key, 0) ;
