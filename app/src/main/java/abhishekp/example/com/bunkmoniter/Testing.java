@@ -4,31 +4,127 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-/**
- * Created by Abhishek on 03-07-2015.
- */
 public class Testing extends Activity implements View.OnClickListener {
     private TextView text[][] = new TextView[7][8];
     Intent p;
     Bundle b;
     String name;
-
+    SharedPreferences memory;
+    public static String folder = "myfolder";
+    String savingstring;
+    SharedPreferences.Editor editing;
+    String gotdata;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.timetableentry);
         initialize();
+        memory = getSharedPreferences(folder, 0);
+
+        loadingdata();
 /*
         NavigationDrawer fr = new NavigationDrawer();
         FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ft.add(R.id.timetableentry,fr,"text");
         ft.commit();*/
+    }
+
+    private void loadingdata() {
+
+        memory = getSharedPreferences(folder, 0);
+        gotdata = memory.getString("11", "Empty");
+        text[1][1].setText(gotdata);
+        gotdata = memory.getString("21", "Empty");
+        text[2][1].setText(gotdata);
+        gotdata = memory.getString("31", "Empty");
+        text[3][1].setText(gotdata);
+        gotdata = memory.getString("41", "Empty");
+        text[4][1].setText(gotdata);
+        gotdata = memory.getString("51", "Empty");
+        text[5][1].setText(gotdata);
+        gotdata = memory.getString("61", "Empty");
+        text[6][1].setText(gotdata);
+        gotdata = memory.getString("12", "Empty");
+        text[1][2].setText(gotdata);
+        gotdata = memory.getString("22", "Empty");
+        text[2][2].setText(gotdata);
+        gotdata = memory.getString("32", "Empty");
+        text[3][2].setText(gotdata);
+        gotdata = memory.getString("42", "Empty");
+        text[4][2].setText(gotdata);
+        gotdata = memory.getString("52", "Empty");
+        text[5][2].setText(gotdata);
+        gotdata = memory.getString("62", "Empty");
+        text[6][2].setText(gotdata);
+        gotdata = memory.getString("13", "Empty");
+        text[1][3].setText(gotdata);
+        gotdata = memory.getString("23", "Empty");
+        text[2][3].setText(gotdata);
+        gotdata = memory.getString("33", "Empty");
+        text[3][3].setText(gotdata);
+        gotdata = memory.getString("43", "Empty");
+        text[4][3].setText(gotdata);
+        gotdata = memory.getString("53", "Empty");
+        text[5][3].setText(gotdata);
+        gotdata = memory.getString("63", "Empty");
+        text[6][3].setText(gotdata);
+        gotdata = memory.getString("14", "Empty");
+        text[1][4].setText(gotdata);
+        gotdata = memory.getString("24", "Empty");
+        text[2][4].setText(gotdata);
+        gotdata = memory.getString("34", "Empty");
+        text[3][4].setText(gotdata);
+        gotdata = memory.getString("44", "Empty");
+        text[4][4].setText(gotdata);
+        gotdata = memory.getString("54", "Empty");
+        text[5][4].setText(gotdata);
+        gotdata = memory.getString("64", "Empty");
+        text[6][4].setText(gotdata);
+        gotdata = memory.getString("15", "Empty");
+        text[1][5].setText(gotdata);
+        gotdata = memory.getString("25", "Empty");
+        text[2][5].setText(gotdata);
+        gotdata = memory.getString("35", "Empty");
+        text[3][5].setText(gotdata);
+        gotdata = memory.getString("45", "Empty");
+        text[4][5].setText(gotdata);
+        gotdata = memory.getString("55", "Empty");
+        text[5][5].setText(gotdata);
+        gotdata = memory.getString("65", "Empty");
+        text[6][5].setText(gotdata);
+        gotdata = memory.getString("16", "Empty");
+        text[1][6].setText(gotdata);
+        gotdata = memory.getString("26", "Empty");
+        text[2][6].setText(gotdata);
+        gotdata = memory.getString("36", "Empty");
+        text[3][6].setText(gotdata);
+        gotdata = memory.getString("46", "Empty");
+        text[4][6].setText(gotdata);
+        gotdata = memory.getString("56", "Empty");
+        text[5][6].setText(gotdata);
+        gotdata = memory.getString("66", "Empty");
+        text[6][6].setText(gotdata);
+        gotdata = memory.getString("17", "Empty");
+        text[1][7].setText(gotdata);
+        gotdata = memory.getString("27", "Empty");
+        text[2][7].setText(gotdata);
+        gotdata = memory.getString("37", "Empty");
+        text[3][7].setText(gotdata);
+        gotdata = memory.getString("47", "Empty");
+        text[4][7].setText(gotdata);
+        gotdata = memory.getString("57", "Empty");
+        text[5][7].setText(gotdata);
+        gotdata = memory.getString("67", "Empty");
+        text[6][7].setText(gotdata);
+
+
     }
 
     private void initialize() {
@@ -112,7 +208,7 @@ public class Testing extends Activity implements View.OnClickListener {
         text[3][6].setOnClickListener(this);
         text[4][6].setOnClickListener(this);
         text[5][6].setOnClickListener(this);
-        text[6][1].setOnClickListener(this);
+        text[6][6].setOnClickListener(this);
         text[1][7].setOnClickListener(this);
         text[2][7].setOnClickListener(this);
         text[3][7].setOnClickListener(this);
@@ -131,7 +227,8 @@ public class Testing extends Activity implements View.OnClickListener {
         switch (v.getId()){
             case R.id.tv11:
                 p = new Intent(Testing.this,Preference.class);
-                startActivityForResult(p,11);
+                startActivityForResult(p, 11);
+
                 break;
             case R.id.tv21:
                 p = new Intent(Testing.this,Preference.class);
@@ -315,220 +412,387 @@ public class Testing extends Activity implements View.OnClickListener {
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[1][1].setText(name);
+                    savingstring = text[1][1].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("11", savingstring);
+                    editing.commit();
                     break;
                 case 21:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[2][1].setText(name);
+                    savingstring = text[2][1].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("21", savingstring);
+                    editing.commit();
                     break;
                 case 31:
                      b = data.getExtras();
                      name = b.getString("nameoftopic");
                     text[3][1].setText(name);
+                    savingstring = text[3][1].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("31", savingstring);
+                    editing.commit();
                     break;
                 case 41:
                      b = data.getExtras();
                      name = b.getString("nameoftopic");
                     text[4][1].setText(name);
+                    savingstring = text[4][1].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("41", savingstring);
+                    editing.commit();
                     break;
                 case 51:
                      b = data.getExtras();
                      name = b.getString("nameoftopic");
                     text[5][1].setText(name);
+                    savingstring = text[5][1].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("51", savingstring);
+                    editing.commit();
                     break;
                 case 61:
                      b = data.getExtras();
                      name = b.getString("nameoftopic");
                     text[6][1].setText(name);
+                    savingstring = text[6][1].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("61", savingstring);
+                    editing.commit();
                     break;
                 case 12:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[1][2].setText(name);
+                    savingstring = text[1][2].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("12", savingstring);
+                    editing.commit();
                     break;
                 case 22:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[2][2].setText(name);
+                    savingstring = text[2][2].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("22", savingstring);
+                    editing.commit();
                     break;
                 case 32:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[3][2].setText(name);
+                    savingstring = text[3][2].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("32", savingstring);
+                    editing.commit();
                     break;
                 case 42:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[4][2].setText(name);
+                    savingstring = text[4][2].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("42", savingstring);
+                    editing.commit();
                     break;
                 case 52:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[5][2].setText(name);
+                    savingstring = text[5][2].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("52", savingstring);
+                    editing.commit();
                     break;
                 case 62:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[6][2].setText(name);
+                    savingstring = text[6][2].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("62", savingstring);
+                    editing.commit();
                     break;
                 case 13:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[1][3].setText(name);
+                    savingstring = text[1][3].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("13", savingstring);
+                    editing.commit();
                     break;
                 case 23:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[2][3].setText(name);
+                    savingstring = text[2][3].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("23", savingstring);
+                    editing.commit();
                     break;
                 case 33:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[3][3].setText(name);
+                    savingstring = text[3][3].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("33", savingstring);
+                    editing.commit();
                     break;
                 case 43:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[4][3].setText(name);
+                    savingstring = text[4][3].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("43", savingstring);
+                    editing.commit();
                     break;
                 case 53:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[5][3].setText(name);
+                    savingstring = text[5][3].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("53", savingstring);
+                    editing.commit();
+
                     break;
                 case 63:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[6][3].setText(name);
+                    savingstring = text[6][3].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("63", savingstring);
+                    editing.commit();
                     break;
                 case 14:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[1][4].setText(name);
+                    savingstring = text[1][4].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("14", savingstring);
+                    editing.commit();
                     break;
                 case 24:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[2][4].setText(name);
+                    savingstring = text[2][4].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("24", savingstring);
+                    editing.commit();
                     break;
                 case 34:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[3][4].setText(name);
+                    savingstring = text[3][4].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("34", savingstring);
+                    editing.commit();
                     break;
                 case 44:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[4][4].setText(name);
+                    savingstring = text[4][4].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("44", savingstring);
+                    editing.commit();
                     break;
                 case 54:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[5][4].setText(name);
+                    savingstring = text[5][4].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("54", savingstring);
+                    editing.commit();
                     break;
                 case 64:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[6][4].setText(name);
+                    savingstring = text[6][4].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("64", savingstring);
+                    editing.commit();
                     break;
                 case 15:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[1][5].setText(name);
+                    savingstring = text[1][5].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("15", savingstring);
+                    editing.commit();
                     break;
                 case 25:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[2][5].setText(name);
+                    savingstring = text[2][5].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("25", savingstring);
+                    editing.commit();
                     break;
                 case 35:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[3][5].setText(name);
+                    savingstring = text[3][5].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("35", savingstring);
+                    editing.commit();
                     break;
                 case 45:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[4][5].setText(name);
+                    savingstring = text[4][5].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("45", savingstring);
+                    editing.commit();
                     break;
                 case 55:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[5][5].setText(name);
+                    savingstring = text[5][5].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("55", savingstring);
+                    editing.commit();
                     break;
                 case 65:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[6][5].setText(name);
+                    savingstring = text[6][5].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("65", savingstring);
+                    editing.commit();
                     break;
                 case 16:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[1][6].setText(name);
+                    savingstring = text[1][6].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("16", savingstring);
+                    editing.commit();
                     break;
                 case 26:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[2][6].setText(name);
+                    savingstring = text[2][6].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("26", savingstring);
+                    editing.commit();
                     break;
                 case 36:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[3][6].setText(name);
+                    savingstring = text[3][6].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("36", savingstring);
+                    editing.commit();
                     break;
                 case 46:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[4][6].setText(name);
+                    savingstring = text[4][6].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("46", savingstring);
+                    editing.commit();
                     break;
                 case 56:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[5][6].setText(name);
+                    savingstring = text[5][6].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("56", savingstring);
+                    editing.commit();
                     break;
                 case 66:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[6][6].setText(name);
+                    savingstring = text[6][6].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("66", savingstring);
+                    editing.commit();
                     break;
                 case 17:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[1][7].setText(name);
+                    savingstring = text[1][7].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("17", savingstring);
+                    editing.commit();
                     break;
                 case 27:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[2][7].setText(name);
+                    savingstring = text[2][7].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("27", savingstring);
+                    editing.commit();
                     break;
                 case 37:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[3][7].setText(name);
+                    savingstring = text[3][7].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("37", savingstring);
+                    editing.commit();
                     break;
                 case 47:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[4][7].setText(name);
+                    savingstring = text[4][7].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("47", savingstring);
+                    editing.commit();
                     break;
                 case 57:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[5][7].setText(name);
+                    savingstring = text[5][7].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("57", savingstring);
+                    editing.commit();
                     break;
                 case 67:
                     b = data.getExtras();
                     name = b.getString("nameoftopic");
                     text[6][7].setText(name);
+                    savingstring = text[6][7].getText().toString();
+                    editing = memory.edit();
+                    editing.putString("67", savingstring);
+                    editing.commit();
                     break;
 
             }
 
 
 
-            Bundle b = data.getExtras();
-            String name = b.getString("nameoftopic");
-            text[1][1].setText(name);
+
 
         }
     }

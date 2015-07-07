@@ -8,9 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-/**
- * Created by Abhishek on 03-07-2015.
- */
+
 public class Preference  extends Activity implements AdapterView.OnItemClickListener {
 
     ListView lv;

@@ -10,9 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-/**
- * Created by Abhishek on 03-07-2015.
- */
 public class AddTT extends Activity implements View.OnClickListener {
     Button b ;
     EditText et ;
