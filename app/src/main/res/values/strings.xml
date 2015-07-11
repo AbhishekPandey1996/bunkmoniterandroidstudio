@@ -15,12 +15,4 @@
         <item>option 9</item>
 
     </string-array>
-    <string-array name="navdraweroptionlist">
-        <item>Show Subject List</item>
-        <item>Customize Timetable</item>
-        <item>Add a new subject</item>
-        <item>View/Mark this week timetable</item>
-        <item>Show general Timetable</item>
-        <item>View attendance Stats </item>
-    </string-array>
 </resources>

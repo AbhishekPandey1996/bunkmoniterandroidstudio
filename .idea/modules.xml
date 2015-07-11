@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BunkMoniter.iml" filepath="$PROJECT_DIR$/BunkMoniter.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bunkmoniterandroidstudio.iml" filepath="$PROJECT_DIR$/bunkmoniterandroidstudio.iml" />
     </modules>
   </component>
 </project>

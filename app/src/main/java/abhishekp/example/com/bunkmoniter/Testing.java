@@ -1,5 +1,6 @@
 package abhishekp.example.com.bunkmoniter;
 
+
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -28,6 +29,40 @@ public class Testing extends Activity implements View.OnClickListener {
         memory = getSharedPreferences(folder, 0);
 
         loadingdata();
+
+        /**Floating Action Button **/
+        final FloatingActionButton button_addtopic = (FloatingActionButton) findViewById(R.id.button_addtopic);
+        button_addtopic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                button_addtopic.setTitle("Add Topic clicked");
+            }
+        });
+
+        final FloatingActionButton button_ViewTopics = (FloatingActionButton) findViewById(R.id.button_ViewTopics);
+        button_ViewTopics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                button_ViewTopics.setTitle("View Topics clicked");
+            }
+        });
+
+        final FloatingActionButton button_editTT = (FloatingActionButton) findViewById(R.id.button_editTT);
+        button_editTT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                button_editTT.setTitle("Edit TT clicked");
+
+            }
+        });
+
+        final FloatingActionButton button_Attendance = (FloatingActionButton) findViewById(R.id.button_Attendance);
+        button_Attendance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                button_Attendance.setTitle("Attendance  clicked");
+            }
+        });
 /*
         NavigationDrawer fr = new NavigationDrawer();
         FragmentManager fm = getFragmentManager();
@@ -427,8 +462,8 @@ public class Testing extends Activity implements View.OnClickListener {
                     editing.commit();
                     break;
                 case 31:
-                     b = data.getExtras();
-                     name = b.getString("nameoftopic");
+                    b = data.getExtras();
+                    name = b.getString("nameoftopic");
                     text[3][1].setText(name);
                     savingstring = text[3][1].getText().toString();
                     editing = memory.edit();
@@ -436,8 +471,8 @@ public class Testing extends Activity implements View.OnClickListener {
                     editing.commit();
                     break;
                 case 41:
-                     b = data.getExtras();
-                     name = b.getString("nameoftopic");
+                    b = data.getExtras();
+                    name = b.getString("nameoftopic");
                     text[4][1].setText(name);
                     savingstring = text[4][1].getText().toString();
                     editing = memory.edit();
@@ -445,8 +480,8 @@ public class Testing extends Activity implements View.OnClickListener {
                     editing.commit();
                     break;
                 case 51:
-                     b = data.getExtras();
-                     name = b.getString("nameoftopic");
+                    b = data.getExtras();
+                    name = b.getString("nameoftopic");
                     text[5][1].setText(name);
                     savingstring = text[5][1].getText().toString();
                     editing = memory.edit();
@@ -454,8 +489,8 @@ public class Testing extends Activity implements View.OnClickListener {
                     editing.commit();
                     break;
                 case 61:
-                     b = data.getExtras();
-                     name = b.getString("nameoftopic");
+                    b = data.getExtras();
+                    name = b.getString("nameoftopic");
                     text[6][1].setText(name);
                     savingstring = text[6][1].getText().toString();
                     editing = memory.edit();

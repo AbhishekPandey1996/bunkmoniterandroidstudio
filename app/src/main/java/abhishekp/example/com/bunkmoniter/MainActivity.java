@@ -31,7 +31,6 @@ public class MainActivity extends ListActivity {
     protected void onResume() {
         // TODO Auto-generated method stub
         super.onResume();
-
         ttlist = new ArrayList<String>();
 
         timetables = getSharedPreferences(timetables_pref, 0);
@@ -44,8 +43,6 @@ public class MainActivity extends ListActivity {
         ttlist.add("Add a New Timetable");
         setListAdapter(new ArrayAdapter<String>(MainActivity.this,
                 android.R.layout.simple_list_item_1, ttlist));
-
-
     }
 
     @Override
